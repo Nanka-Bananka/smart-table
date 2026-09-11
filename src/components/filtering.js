@@ -16,6 +16,10 @@ export function initFiltering(elements, indexes) {
         )
      })
     return (data, state, action) => {
+        if (!action) {
+        return data.filter(row => compare(row, state));
+    }
+
         if (action.name === "clear"){
             const fieldName = action.dataset.field;
             const prnt = action.parentElement;
